@@ -1,0 +1,87 @@
+<!doctype html>
+<html lang="en">
+<head>
+<meta charset="utf-8">
+<meta name="viewport" content="width=device-width, initial-scale=1">
+<title>NEON SHORE — an open-world crime game</title>
+<link rel="stylesheet" href="./style.css">
+</head>
+<body>
+<canvas id="game-canvas" aria-label="NEON SHORE: an open-world crime game. Drive, steal cars, run missions, lose the cops."></canvas>
+<div id="rush-fx"></div>
+<div id="err" role="alert"></div>
+
+<!-- HUD -->
+<div id="hud" style="display:none">
+  <div id="hud-top-left">
+    <div id="stars"></div>
+    <div id="cash">$250</div>
+    <div class="bar"><div id="health-fill"></div></div>
+    <div class="bar armor"><div id="armor-fill"></div></div>
+    <div id="ammo-line">AMMO <span id="ammo">12 / ∞</span></div>
+  </div>
+  <div id="hud-top-right">
+    <div id="clock">17:24</div>
+    <div id="radio">RADIO OFF</div>
+    <div id="speed"></div>
+  </div>
+  <div id="rush-wrap"><div id="rush-label">RUSH — hold Shift while driving</div><div id="rush-bar"><div id="rush-fill"></div></div></div>
+  <div id="objective-box">
+    <div id="objective"></div>
+    <div id="obj-dist"></div>
+  </div>
+  <canvas id="minimap" width="190" height="190"></canvas>
+  <div id="controls-hint">WASD move/drive · E enter car / talk · F punch · Click shoot · R reload · Space handbrake · Shift RUSH/sprint · Q radio · Esc pause</div>
+</div>
+
+<div id="dialogue" style="display:none">
+  <div id="dlg-name"></div>
+  <div id="dlg-text"></div>
+  <button id="dlg-next">Continue [E]</button>
+</div>
+<div id="center-msg" style="display:none"></div>
+<div id="toast" style="display:none"></div>
+
+<!-- Start screen -->
+<div id="menu">
+  <div class="menu-card">
+    <h1>NEON<br>SHORE</h1>
+    <p class="tagline">A sun-soaked coastal city. Five jobs. One way out.</p>
+    <p class="story">Jax Moreno is back in Neon Shore with $250 and a borrowed name.
+      Mara Voss has work — if you can drive, steal, and lose the cops.
+      Steal cars, run missions, collect the 12 golden palms, and stay out of the NSPD's way.</p>
+    <div class="controls">
+      <b>Drive / walk</b> WASD &nbsp;·&nbsp; <b>Enter car / talk</b> E &nbsp;·&nbsp; <b>Punch</b> F<br>
+      <b>Shoot</b> mouse click &nbsp;·&nbsp; <b>Reload</b> R &nbsp;·&nbsp; <b>Handbrake</b> Space<br>
+      <b>RUSH slow-mo</b> Shift (driving) &nbsp;·&nbsp; <b>Radio</b> Q &nbsp;·&nbsp; <b>Pause</b> Esc<br>
+      Drag the mouse to look around. Scroll to zoom the camera.
+    </div>
+    <button id="btn-new" class="big">NEW GAME</button>
+    <button id="btn-continue" class="big ghost" style="display:none">CONTINUE</button>
+    <p class="fine">Original game — city, characters, vehicles, story, art and music are all our own.
+      Nothing from any commercial game. Runs offline from static files.</p>
+  </div>
+</div>
+
+<!-- Pause -->
+<div id="pause-menu" style="display:none">
+  <div class="menu-card small">
+    <h2>PAUSED</h2>
+    <button id="btn-resume" class="big">RESUME</button>
+    <button id="btn-save" class="big ghost">SAVE GAME</button>
+    <button id="btn-quit" class="big ghost">QUIT TO MENU</button>
+  </div>
+</div>
+
+<!-- Busted / wasted -->
+<div id="end-screen" style="display:none">
+  <div class="menu-card small">
+    <h2 id="end-title">BUSTED</h2>
+    <p id="end-text"></p>
+    <button id="btn-respawn" class="big">GET BACK OUT THERE</button>
+  </div>
+</div>
+
+<script type="module" src="./src/main.js"></script>
+</body>
+</html>
